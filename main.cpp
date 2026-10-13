@@ -26,7 +26,7 @@ void print_summary(
     std::cout<<"错误数量："<< error_count <<std::endl;
     std::cout<<"信息数量："<< info_count <<std::endl;
     std::cout<<"警告数量："<< warning_count <<std::endl;
-    if(error_count>0){
+    if(line_count>0){
         double error_rate = static_cast<double>(error_count)/line_count*100;
         std::cout<<"错误占比："<< error_rate <<"%"<<std::endl;
     }
@@ -37,7 +37,7 @@ void print_summary(
 int main(int argc,char* argv[]){
     
     if(argc!=3){
-        std::cout<<"用法：./log_analyzer<日志文件><搜索关键词>"<<std::endl;
+        std::cout<<"用法：./log_analyzer <日志文件> <搜索关键词>"<<std::endl;
         return 1;
     }
     std::string keyword = argv[2];
