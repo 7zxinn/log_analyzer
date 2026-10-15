@@ -4,5 +4,10 @@ project(log_analyzer LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(log_analyzer src/main.cpp)
+add_executable(
+    log_analyzer 
+    src/main.cpp
+    src/LogAnalyzer.cpp
+)
