@@ -6,7 +6,7 @@
 class LogAnalyzer{
 public:
     struct AnalyzeResult{
-        bool ok{false};
+        bool ok{true};
         std::string keyword;
         int line_count{0};
         int keyword_count{0};

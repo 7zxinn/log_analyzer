@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 
-
 bool LogAnalyzer::is_error(const std::string& line) {
     return line.find("ERROR") != std::string::npos;
 }
@@ -18,14 +17,14 @@ bool LogAnalyzer::is_warning(const std::string& line) {
 
 void LogAnalyzer::print_summary(const AnalyzeResult& result) const{
 
-    for(const std::string& item:result.keyword_lines){
-        std::cout<<item<<std::endl;
+    for(const std::string& RESULT:result.keyword_lines){
+        std::cout<<RESULT<<std::endl;
     }
     if (result.keyword_count == 0) {
         std::cout << "没有找到关键词：" << result.keyword << std::endl;
     }
-    for(const std::string& item:result.error_lines){
-        std::cout<<item<<std::endl;
+    for(const std::string& RESULT:result.error_lines){
+        std::cout<<RESULT<<std::endl;
     }
     std::cout<<"总行数："<< result.line_count <<std::endl;
     std::cout<<"关键词数量："<< result.keyword_count<<std::endl;
@@ -43,20 +42,21 @@ void LogAnalyzer::print_summary(const AnalyzeResult& result) const{
 }
 
 LogAnalyzer::AnalyzeResult LogAnalyzer::analyze(
-        const std::string& filename,
-        const std::string& keyword
-) const{
+    const std::string& filename,
+    const std::string& keyword
+)const{
     AnalyzeResult result;
-    result.keyword = keyword;
 
     std::ifstream file(filename);
     if(!file.is_open()){
         std::cout<<"无法打开文件！"<<std::endl;
-
+        result.ok = false;
         return result;
     }
 
     std::string line;
+    result.keyword = keyword;
+
     while(std::getline(file,line)){
 
         ++result.line_count;
@@ -87,7 +87,6 @@ LogAnalyzer::AnalyzeResult LogAnalyzer::analyze(
         }
     }
     file.close();
-    result.ok = true;
     return result;
 }
 
