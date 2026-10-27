@@ -24,18 +24,18 @@ On ubuntu,install the required tools and libraries:
   sudo apt install build-essential cmake libgtest-dev
 
 ## Build
-Clone the repository and navigate to the project directory.
+Clone the repository and navigate to the project directory:
 
   git clone <repository-url>
   cd log_analyzer
 
-Configure and build the project.
+Configure and build the project:
 
   cmake -S . -B build 
   cmake --build build
 
 ## Usage
-Run the program with a log file path and a keyword.
+Run the program with a log file path and a keyword:
 
   ./build/log_analyzer <log-file-path> <keyword>
 
